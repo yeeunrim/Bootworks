@@ -1,7 +1,43 @@
 @charset "UTF-8";
 
+/* all */
 .wrap{
 	width: 1000px;
 	margin: 30px auto;
 	text-align: center;
+}
+.menu{
+	margin-bottom: 30px;
+}
+.menu a{
+	text-decoration: none;
+	color: dimgray;
+}
+
+/* write.jsp */
+.tbl_write{
+	width: 600px;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+.tbl_write th, td{
+	border: 1px solid dimgray;
+	padding: 6px;
+}
+.tbl_write td a{
+	text-decoration: none;
+	color: dimgray;
+}
+.tbl_write input[type="text"]{
+	width: 580px; 
+	height: 25px;
+	border: none;
+	outline: none;
+}
+.tbl_write textarea{
+	width: 580px; 
+	height: 300px;
+	border: none;
+	outline: none;
+	resize: none;
 }
