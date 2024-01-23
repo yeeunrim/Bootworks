@@ -5,18 +5,29 @@
 <title>Index</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body id="index">
 	<div id="container">
-		<div class="top">
-			<div class="menu">
-		    	<a th:href="@{/member/login}">Login</a>&nbsp; &nbsp;
-		    	<a th:href="@{/board/list}">Board</a>&nbsp; &nbsp;
+		<div class="header">
+			<div class="h_menu">
+		    	<p><a th:href="@{/main}">마이페이지</a></p>
+		    	<p><a th:href="@{/member/join}">회원가입</a></p>
+		    	<p><a th:href="@{/member/list}">회원목록</a></p>
+		    	<p><a th:href="@{/board/list}">게시판</a></p>
+		    	<p><a th:href="@{/auth/main}">인증 및 권한</a></p>
 		    </div>
-			<h2>EX.SPRING</h2>
+			<h2>YE.EX-SPRING</h2>
 		</div>	
 		
 		<div class="main-img">
-	    	<img th:src="@{/images/snow.jpg}" alt="theater">
+	    	<img th:src="@{/images/1.jpeg}" alt="snow">
+	    </div>
+	    
+	    <div class="footer">
+	    	<div class="f_menu">
+	    		<p><a th:href="@{#}">개인정보 처리방침</a></p>
+	    		<p><a th:href="@{#}">이용약관</a></p>
+	    	</div>
+	    	<p>Copyright © 2024 YEEUN Inc. 모든 권리 보유.</p>
 	    </div>
   	</div>
 </body>

@@ -6,6 +6,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,7 +39,9 @@ public class Member {
 	private String name;                                  // 이름
 	
 	@Column
-	private String role;                                  // 권한
+	// private String role;                               // 권한
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	// Board와 관계 매핑 - @OneToMany : 한 명의 회원은 여러 개의 글을 작성할 수 있다.
 	// 주인 설정 필요 - mappedBy : 다(多)쪽이 주인

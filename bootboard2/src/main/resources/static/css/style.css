@@ -1,28 +1,49 @@
 @charset "UTF-8";
 
-*{margin: 0; padding: 0;}
-#container{margin: 0 auto;}
+/* 공통 스타일 */
+*{
+	margin: 0; 
+	padding: 0;
+}
+#index{
+	background: dimgray;
+}
+#container{
+	margin: 0 auto;
+}
 
-ul li{list-style: none; margin: 16px;}
-a{text-decoration: none;}
+ul li{
+	list-style: none; 
+	margin: 16px;
+}
+a{
+	text-decoration: none;
+}
 
 /* index 스타일 */
-.top{
+.header{
 	margin: 15px;
 	height: 30px;
     line-height: 30px;
 }
-.menu{
-	float: left;
+.footer{
+	
 }
-.menu a{
-	color: black;
+.h_menu{
+	width: 100px;
+	text-align: center;
+	line-height: 40px;
+	float: right;
 }
-.menu a:hover{
+.h_menu a{
+	color: lightgray;
+}
+.h_menu a:hover{
 	text-decoration: line-through;
 }
 h2{
-	float: right;
+	float: left;
+	color: white;
 }
 .main-img{
 	z-index: -1;
@@ -30,7 +51,17 @@ h2{
     top: 0;
 }
 .main-img img{
-	width: 75%;
+	width: 85%;
+}
+
+/* main 스타일 */
+h3{
+	text-align: center;
+	margin : 30px;
+}
+.main_menu{
+	margin: 0 auto;
+	text-align: center;
 }
 
 /* list 스타일 */
@@ -39,7 +70,7 @@ h4{
 	margin : 30px;
 }
 .tbl_list{
-	width: 700px; 
+	width: 800px; 
 	margin: 0 auto;
     border-collapse: collapse;
 }
@@ -65,17 +96,10 @@ h4{
 	float: left;
 }
 .joinform input[type="text"], input[type="password"]{
-	width: 250px; 
+	width: 265px; 
 }
 .joinform input{
 	padding: 4px;
 }
 
-/* member detail 스타일 */  
-.detail{width: 420px; margin: 0 auto;}
-.detail label{width: 100px; float: left;}
-.detail input{padding: 4px;}
-
-.writeform{width: 800px; margin: 0 auto;}
-.alert-danger{padding-left: 60px; color: #b00;}
   

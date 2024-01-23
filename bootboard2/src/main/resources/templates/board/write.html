@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>글쓰기</title>
+<title>Board | Write</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
     <div id="container">
-        <h2>글쓰기</h2>
+        <h2>글 작성</h2>
         <form th:action="@{/board/write}" method="post" 
               enctype="multipart/form-data"
               th:object="${boardDTO}" class="writeform">
