@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;}
+#container{margin: 0 auto;}
+
+ul li{list-style: none; margin: 16px;}
+a{text-decoration: none;}
+
+/* index 스타일 */
+.top{
+	margin: 15px;
+	height: 30px;
+    line-height: 30px;
+}
+.menu{
+	float: left;
+}
+.menu a{
+	color: black;
+}
+.menu a:hover{
+	text-decoration: line-through;
+}
+h2{
+	float: right;
+}
+.main-img{
+	z-index: -1;
+	position: absolute;
+    top: 0;
+}
+.main-img img{
+	width: 75%;
+}
+
+/* list 스타일 */
+h4{
+	text-align: center;
+	margin : 30px;
+}
+.tbl_list{
+	width: 700px; 
+	margin: 0 auto;
+    border-collapse: collapse;
+}
+.tbl_list th, td{
+	border: 1px solid #ccc; 
+	padding: 8px;
+	text-align: center;
+}
+.tbl_list td a{
+	color: dimgray;
+}
+.tbl_list input[type="text"]{width: 680px; height: 25px}
+.tbl_list textarea{width: 680px; height: 300px}
+.btn_write{text-align: left; padding-left: 250px;}
+
+/* login 스타일 */
+.joinform{
+	width: 420px; 
+	margin: 0 auto;
+}
+.joinform label{
+	width: 100px; 
+	float: left;
+}
+.joinform input[type="text"], input[type="password"]{
+	width: 250px; 
+}
+.joinform input{
+	padding: 4px;
+}
+
+/* member detail 스타일 */  
+.detail{width: 420px; margin: 0 auto;}
+.detail label{width: 100px; float: left;}
+.detail input{padding: 4px;}
+
+.writeform{width: 800px; margin: 0 auto;}
+.alert-danger{padding-left: 60px; color: #b00;}
+  

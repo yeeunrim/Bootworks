@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Board | Detail</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div id="container">
+         <h4>글 상세보기</h4>
+         
+         <table class="tbl_list">
+       		<tbody>
+       		  <tr>
+       		  	<td>
+       		  		<input type="text" name="title"
+       		  			th:value="${board.title}" readonly>
+       		  	</td>
+       		  </tr>
+       		  <tr>
+       		  	<td>
+       		  		<input type="text" 
+       		  			th:value="${board.member.name}" readonly>
+       		  	</td>
+       		  </tr>
+       		  <tr>
+       		  	<td>
+       		  		<textarea rows="5" cols="50" name="content"
+       		  			th:text="${board.content}" readonly></textarea>       		  	    
+       		  	</td>
+       		  </tr>
+       		  <tr>
+       		  	<td>
+       		  	
+       		  		<input type="text" 
+       		  			th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" readonly>
+       		  	</td>
+       		  </tr>
+       		  <tr>
+       		  	<td>
+       		  	    <!-- Pageable 클래스의 page -> getPageNumber() -->
+       		  		 <a th:href="@{/board/list}">
+       		  			<input type="button" value="목록">
+       		  		</a>
+       		  	</td>
+       		  </tr>
+       		</tbody>
+       	</table>
+	</div>
+</body>
+</html>

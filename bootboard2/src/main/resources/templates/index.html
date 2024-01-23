@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div id="container">
+		<div class="top">
+			<div class="menu">
+		    	<a th:href="@{/member/login}">Login</a>&nbsp; &nbsp;
+		    	<a th:href="@{/board/list}">Board</a>&nbsp; &nbsp;
+		    </div>
+			<h2>EX.SPRING</h2>
+		</div>	
+		
+		<div class="main-img">
+	    	<img th:src="@{/images/snow.jpg}" alt="theater">
+	    </div>
+  	</div>
+</body>
+</html>
