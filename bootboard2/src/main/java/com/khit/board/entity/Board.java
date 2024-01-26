@@ -22,7 +22,7 @@ import lombok.ToString;
 @Getter
 @Table(name = "t_board")
 @Entity
-public class Board{
+public class Board extends BaseEntity{
 	
 	@Id                                                   // PK (Primary Key)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)   // 자동순번
@@ -41,7 +41,7 @@ public class Board{
 	// fetch는 조회할 때 사용한다.
 	// EAGER : 전제 조회 & LAZY : 특정한 조회
 	// JoinColumn(name = "설정 이름") : 외래키 설정
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")                       // FK (Foreign Key) 설정
 	private Member member;
 

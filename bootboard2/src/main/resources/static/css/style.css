@@ -1,105 +1,424 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap');
 
 /* 공통 스타일 */
 *{
 	margin: 0; 
 	padding: 0;
 }
-#index{
-	background: dimgray;
-}
 #container{
-	margin: 0 auto;
-}
-
-ul li{
-	list-style: none; 
-	margin: 16px;
+	position: relative;
+	width: 100%;
 }
 a{
 	text-decoration: none;
 }
 
 /* index 스타일 */
-.header{
+header{
 	margin: 15px;
 	height: 30px;
     line-height: 30px;
 }
-.footer{
-	
+header h2{
+	font-family: 'Libre Barcode 128 Text', system-ui;
+	float: left;
+	color: white;
+	font-size: 40px;
+	margin-top: 10px;
 }
 .h_menu{
-	width: 100px;
+	width: 110px;
 	text-align: center;
-	line-height: 40px;
+	line-height: 50px;
 	float: right;
+	margin-right: 10px;
 }
 .h_menu a{
-	color: lightgray;
+	color: white;
+	font-style: italic;
+	font-size: 20px;
+	box-shadow: inset 0px -1.5em 0 0 black;
+	padding: 5px;
 }
 .h_menu a:hover{
 	text-decoration: line-through;
 }
-h2{
-	float: left;
-	color: white;
-}
 .main-img{
+	height: 1000px;
 	z-index: -1;
+	position: relative;
+	top: -60px;
+}
+.image1 img{
+	width: 50%;
+	height: 70%;
 	position: absolute;
     top: 0;
 }
-.main-img img{
-	width: 85%;
+.image2 img{
+	width: 40%;
+	height: 80%;
+	position: absolute;
+	top: 100px;
+	right: 0;
+}
+.weather{
+	width: 400px;
+    height: 60px;
+    text-align: center;
+    padding: 20px;
+    /* background: silver;
+    box-shadow: 1px 1px 3px 1px black inset; */
+    color: white;
+    line-height: 35px;
+    position: absolute;
+    top: 63%;
+    left: 40%;
+    transform: translate(-63%, -40%);
+}
+footer{
+	width: 98%;
+    height: 50px;
+    margin: 0 auto;
+    line-height: 50px;
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+footer .f_menu{
+	float: left;
+}
+footer .f_menu a{
+	color: black;
+}
+footer p{
+	float: right;
 }
 
 /* main 스타일 */
-h3{
-	text-align: center;
-	margin : 30px;
+header h2 a{
+	color: white;
 }
-.main_menu{
+.auth{
+	width: 100%;
+	height: 100px;
 	margin: 0 auto;
 	text-align: center;
+	line-height: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.auth h1 span{
+	padding: 50px 150px;
+	background: linear-gradient(0deg, dimgray, white); 
+	border-radius: 20px;
+}
+
+/* login 스타일 */
+#login{
+	width: 450px; 
+	margin: 0 auto;
+}
+#login h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+.login_blk{
+	width: 400px; 
+	margin: 7px; 
+	padding: 10px; 
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+}
+
+/* join 스타일 */
+#join{
+	width: 450px; 
+	margin: 0 auto;
+}
+#join h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+#join_word{
+	text-align: right; 
+	margin: 10px 20px;
+}
+#join_tbl{
+	margin: 0 auto;
+}
+#join_tbl tr td{
+	border: none;
+}
+#check-result{
+	text-align: left;
+	margin: 0 10px;
+}
+.join_blk{
+	width: 400px; 
+	margin: 7px; 
+	padding: 10px; 
+	border: 1px solid black;
+	outline: none;
+	float: right;
+}
+.join_btn{
+	width: 422px; 
+	padding: 10px; 
+	font-size: 15px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 15px 5px;
 }
 
 /* list 스타일 */
-h4{
+#list h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+#list p{
+	text-align: center; 
+	color: dimgray;
+	margin: 20px;
+	font-size: 13px;
+}
+#list_tbl{
+	width: 1000px; 
+	margin: 0 auto; 
+	border-collapse: collapse;
+}
+#list_tbl th{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 7px; 
 	text-align: center;
-	margin : 30px;
 }
-.tbl_list{
-	width: 800px; 
-	margin: 0 auto;
-    border-collapse: collapse;
-}
-.tbl_list th, td{
-	border: 1px solid #ccc; 
-	padding: 8px;
+#list_tbl td{
+	border-bottom: 1px solid lightgray;
+	padding: 15px; 
 	text-align: center;
 }
-.tbl_list td a{
+.memberlist_a a{
+	color: white;
+}
+.memberlist_a a:hover{
+	text-decoration: underline;
+}
+.click_btn{
+	width: 50px; 
+	padding: 5px; 
+	font-size: 15px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 15px 8px;
+} 
+
+/* boardlist 스타일 */
+#boardlist{
+	width: 1000px; 
+	height: 100%;
+	margin: 10px auto;
+}
+#boardlist h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+#boardlist p{
+	text-align: center; 
+	color: dimgray;
+	margin: 20px;
+	font-size: 13px;
+}
+.boardlist_a a{
 	color: dimgray;
 }
-.tbl_list input[type="text"]{width: 680px; height: 25px}
-.tbl_list textarea{width: 680px; height: 300px}
-.btn_write{text-align: left; padding-left: 250px;}
+.write2_btn{
+	width: 70px; 
+	padding: 10px; 
+	font-size: 15px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 20px 0;
+	float: right;
+}
 
-/* login 스타일 */
-.joinform{
-	width: 420px; 
+/* write 스타일 */
+#write h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+#write p{
+	text-align: center; 
+	color: dimgray;
+	margin: 20px;
+	font-size: 13px;
+}
+#write_tbl{
 	margin: 0 auto;
 }
-.joinform label{
-	width: 100px; 
-	float: left;
+#write_tbl tr td{
+	border: none;
 }
-.joinform input[type="text"], input[type="password"]{
-	width: 265px; 
+.write_blk{
+	width: 700px; 
+	margin: 7px; 
+	padding: 10px; 
+	border: 1px solid black;
+	outline: none;
+	float: right;
+	resize: vertical; 
 }
-.joinform input{
-	padding: 4px;
+.write_btn{
+	width: 355px; 
+	padding: 10px; 
+	font-size: 15px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 15px 5px;
 }
 
-  
+/* detail 스타일 */
+#detail h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+#detail p{
+	text-align: center; 
+	color: dimgray;
+	margin: 20px;
+	font-size: 13px;
+}
+#detail_tbl{
+	width: 530px; 
+	margin: 0 auto; 
+	border-collapse: collapse;
+}
+#detail_tbl td label{
+	line-height: 50px; 
+	margin: 17px;
+}
+#detail_tbl td{
+	text-align: center;
+}
+.detail_btn{
+	width: 500px; 
+	padding: 10px; 
+	font-size: 15px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 15px 8px;
+	float: right;
+}
+
+/* update 스타일 */
+.update_btn{
+	width: 240px; 
+	padding: 10px; 
+	font-size: 15px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 15px 8px;
+}
+.update_btn:nth-of-type(2){
+	float: right;
+}
+
+/* boarddetail 스타일 */
+#boarddetail{
+	width: 750px; 
+	margin: 0 auto;
+}
+#boarddetail h4{
+	text-align: center; 
+	margin: 30px 20px 20px 20px;
+}
+#boarddetail_tbl{
+	width: 500px;
+	margin: 0 auto;
+	padding: 5px 10px;
+	padding-bottom: 0;
+}
+/* 제목 */
+#boarddetail_tbl tr:nth-child(1) td input{
+	font-size: 20px;
+	border: none;
+	width: 100%;
+	outline: none;
+}
+/* 글쓴이 */
+#boarddetail_tbl tr:nth-child(2) td input{
+	font-size: 15px;
+	color: dimgray;
+	border: none;
+	width: 100%;
+	outline: none;
+}
+/* 작성일 */
+#boarddetail_tbl tr:nth-child(3) td input{
+	font-size: 11px;
+	border: none;
+	border-bottom: 1px solid lightgray;
+	color: gray;
+	width: 100%;
+	padding-bottom: 10px;
+	float: left;
+	outline: none;
+}
+/* 내용 */
+#boarddetail_tbl tr:nth-child(4) td textarea{
+	line-height: 1.5;
+	border: none;
+	border-bottom: 1px solid lightgray;
+	width: 100%;
+	padding-bottom: 10px;
+	outline: none;
+	resize: vertical; 
+}
+/* 수정일 */
+#boarddetail_tbl tr:nth-child(5) td{
+	font-size: 11px;
+	color: gray;
+	float: right;
+	padding-right: 0;
+}
+#boarddetail_tbl tr td{
+	padding: 5px;
+	padding-right: 0;
+}
+#boarddetail_menu{
+	width: 500px;
+	height: 50px;
+	text-align: center;
+	margin: 0 auto;
+}
+.boarddetail_btn:nth-child(1){
+	margin-right: 0;
+}
+.boarddetail_btn{
+	width: 50px; 
+	padding: 10px; 
+	font-size: 12px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+	margin: 10px 15px;
+	float: right;
+}

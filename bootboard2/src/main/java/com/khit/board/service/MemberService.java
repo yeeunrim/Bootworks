@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.khit.board.config.SecurityUser;
 import com.khit.board.entity.Member;
 import com.khit.board.entity.Role;
 import com.khit.board.exception.BootBoardException;
@@ -55,6 +56,28 @@ public class MemberService {
 
 	public void deleteById(Integer id) {
 		memberRepository.deleteById(id);
+	}
+
+	public Member findByMemberId(SecurityUser principal) {
+		Optional<Member> member = memberRepository.findByMemberId(principal.getUsername());
+		return member.get();
+	}
+
+	public void update(Member member) {
+		String encPW = pwEncoder.encode(member.getPassword());
+		member.setPassword(encPW);
+		member.setRole(Role.MEMBER);
+		memberRepository.save(member);
+	}
+
+	public String findByMemberId(String memberId) {
+		//db에 있는 아이디 조회해서 있으면 "OK" 아니면 "NO"를 보냄
+		Optional<Member> findMember = memberRepository.findByMemberId(memberId);
+		if(findMember.isPresent()) {
+			return "NO";
+		}else {
+			return "OK";
+		}
 	}
 
 }

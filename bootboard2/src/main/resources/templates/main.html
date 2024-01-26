@@ -8,22 +8,39 @@
 </head>
 <body>
     <div id="container">
-    	<div sec:authorize="isAuthenticated()" class="auth">
-    		<!-- <p th:text="${#authentication.getPrincipal()}"></p> -->
-    		<h3 sec:authentication="principal.member.name"></h3>
-    	</div>
-    	 
-		<div class="main_menu">
-		   <a th:href="@{/member/logout}">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-		   	  <button type="button">로그아웃</button>
-		   </a>&nbsp; &nbsp;
-		   <a th:href="@{/member/update">
-		   	  <button type="button">나의정보 수정</button>
-		   </a>&nbsp; &nbsp;
-		   <a th:href="@{/}">
-		   	  <button type="button">홈으로</button>
-		   </a>
-		</div>
+		<header>
+			<h2><a th:href="@{/}">YE.EX-SPRING</a></h2>
+			<div class="h_menu">
+				<p><a th:href="@{/member/logout}">로그아웃</a></p>
+		    	<p><a th:href="@{/member/update}">정보수정</a></p>
+			</div>
+		</header>
+		
+		<section class="main-img">
+			<div class="image1">
+				<img th:src="@{/images/1.jpeg}" alt="mainImg1">
+			</div>
+			<div class="image2">
+				<img th:src="@{/images/2.jpeg}" alt="mainImg2">
+			</div>
+		</section>
+		
+		<section>
+			<div sec:authorize="isAuthenticated()" class="auth">
+	    		<!-- <p th:text="${#authentication.getPrincipal()}"></p> -->
+				<h1 th:utext="'<span>' + ${#authentication.principal.member.name} 
+					+ '님, 만나서 반갑습니다 !</span>'">
+				</h1>
+    		</div>
+		</section>
+			
+		<footer>
+			<div class="f_menu">
+	    		<a th:href="@{#}">개인정보 처리방침</a>&nbsp; | &nbsp;
+	    		<a th:href="@{#}">이용약관</a>
+	    	</div>
+	    	<p>Copyright © 2024 YEEUN Inc. 모든 권리 보유.</p>
+		</footer>
 	</div>
 </body>
 </html>

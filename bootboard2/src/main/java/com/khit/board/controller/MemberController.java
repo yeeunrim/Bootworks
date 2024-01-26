@@ -2,17 +2,20 @@ package com.khit.board.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.khit.board.config.SecurityUser;
 import com.khit.board.entity.Member;
 import com.khit.board.service.MemberService;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -28,7 +31,7 @@ public class MemberController {
 	}
 	
 	// 로그인 처리 - 세션 사용 시
-	@PostMapping("/member/login")
+	/* @PostMapping("/member/login")
 	public String login(@ModelAttribute Member member, HttpSession session) {
 		Member loginMember = memberService.login(member);
 		if(loginMember != null && loginMember.getPassword().equals(member.getPassword())) {
@@ -38,7 +41,7 @@ public class MemberController {
 		} else {
 			return "/member/login";
 		}
-	}
+	} */
 	
 	// 메인 페이지
 	@GetMapping("/main")
@@ -83,18 +86,31 @@ public class MemberController {
 	
 	// 회원 삭제
 	@GetMapping("/member/delete/{id}")
-	public String getMemberDetail(@PathVariable Integer id) {
+	public String getMemberDelete(@PathVariable Integer id) {
 		memberService.deleteById(id);
 		return "redirect:/member/list";
 	}
 	
-	// 회원 수정
+	//회원 수정 페이지
 	@GetMapping("/member/update")
-	public String updateForm(@PathVariable Integer id, Model model) {
-		Member member = memberService.findById(id);
+	public String updateMember(@AuthenticationPrincipal SecurityUser principal, Model model) {
+		Member member = memberService.findByMemberId(principal);
 		model.addAttribute("member", member);
 		return "/member/update";
 	}
 	
+	//회원 수정 처리
+	@PostMapping("/member/update")
+	public String update(@ModelAttribute Member member) {
+		memberService.update(member);
+		return "redirect:/member/" + member.getId();
+	}
+	
+	//이메일 중복 검사
+	@PostMapping("/member/check-id")
+	public @ResponseBody String checkId(@RequestParam("memberId") String memberId) {
+		String checkResult = memberService.findByMemberId(memberId);
+		return checkResult;
+	}
 	
 }

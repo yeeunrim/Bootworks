@@ -8,7 +8,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,7 +22,7 @@ import lombok.ToString;
 @Getter
 @Table(name = "t_member")
 @Entity
-public class Member {
+public class Member extends BaseEntity{
 	
 	@Id                                                   // PK (Primary Key)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)   // 자동순번
@@ -38,7 +37,7 @@ public class Member {
 	@Column(nullable = false, length = 30)                // Not Null & 최대 30자
 	private String name;                                  // 이름
 	
-	@Column
+	// @Column
 	// private String role;                               // 권한
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -46,7 +45,7 @@ public class Member {
 	// Board와 관계 매핑 - @OneToMany : 한 명의 회원은 여러 개의 글을 작성할 수 있다.
 	// 주인 설정 필요 - mappedBy : 다(多)쪽이 주인
 	// 삭제 - cascade : 회원이 삭제되면 작성한 글 또한 함께 삭제된다.
-	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<>();
 
 }

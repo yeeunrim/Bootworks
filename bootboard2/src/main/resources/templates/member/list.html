@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<meta charset="UTF-8">
+<title>Member | List</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div id="container">
+		<div id="list">
+			<h4>회원 목록</h4>
+			<p>관리자가 관리하는 가입한 회원들의 정보 리스트입니다.</p>
+			<table id="list_tbl">
+				<thead>
+			  		<tr>
+			  			<th>번호</th>
+				  	    <th>아이디</th>
+				  	    <th>이름</th>
+				  	    <th>권한</th>
+				  	    <th>조회</th>
+				  	    <th>삭제</th>
+			  		</tr>
+			  	</thead>
+			  	<tbody>
+			  		<tr th:each="member: ${memberList}">
+			  			 <td th:text="${member.id}"></td>
+				  	     <td th:text="${member.memberId}"></td>
+				  	     <td th:text="${member.name}"></td> 
+				  	     <td th:text="${member.role}"></td>
+				  	     <td class="memberlist_a"><a th:href="@{|/member/${member.id}|}" class="click_btn">조회</a></td>
+				  	     <td class="memberlist_a"><span class="click_btn">---</span></td>
+				  	     <!-- 버티컬바(|)는 ${member.id}를 숫자로 유지시켜줌 -->
+				  	     <th:block sec:authorize="isAuthenticated()" 
+	       		  			th:if="${#authentication.getPrincipal.getUsername()} == ${member.memberId}">
+					  	     <td class="memberlist_a"><a th:href="@{|/member/delete/${member.id}|}"
+					  	           onclick="return confirm('해당 회원을 삭제하시겠습니까?')" class="click_btn">삭제</a></td>
+					  	 </th:block>
+			  		</tr>
+			  	</tbody>
+			</table>
+		</div>
+		<!-- footer.html 연결 -->
+   		<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	</div>
+</body>
+</html>

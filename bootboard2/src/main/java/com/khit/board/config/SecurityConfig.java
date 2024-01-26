@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -18,15 +19,26 @@ public class SecurityConfig {
 	
 	@Bean // 스프링에서 관리하는 Bean이 아니므로 따로 선언 필요 (프로젝트에서 관리 안됨)
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+		
+		http.userDetailsService(customService);
+		
 		// 인증 설정 -> 권한 설정
 		// 로그인X : "/", "/css/**", "/images/**", "/member/**", "/auth/main"
 		// 로그인O : 그 외 경로
 		http
 			.authorizeHttpRequests(authorize -> authorize
-					.requestMatchers("/", "/css/**", "/images/**", "/member/**", "/auth/main")
-					.permitAll().anyRequest().authenticated())
+					.requestMatchers("/", "/css/**", "/images/**", "/js/**").permitAll()
+					.requestMatchers("/board/write").authenticated()
+					.requestMatchers("/member/**", "/board/**").permitAll()
+					.anyRequest().authenticated())
+			.formLogin(form -> form.loginPage("/member/login").defaultSuccessUrl("/").permitAll());
 					
-			.formLogin(form -> form.loginPage("/member/login"));
+		
+		http
+			.logout().logoutUrl("/member/logout")
+				.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+				.invalidateHttpSession(true)
+				.logoutSuccessUrl("/");
 		
 		return http.build();
 	}

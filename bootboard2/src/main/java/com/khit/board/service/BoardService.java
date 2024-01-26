@@ -25,4 +25,16 @@ public class BoardService {
 		return boardRepository.findById(id).get();
 	}
 
+	public void save(Board board) {
+		boardRepository.save(board);
+	}
+
+	public void deleteById(Integer id) {
+		boardRepository.deleteById(id);
+	}
+
+	public void update(Board board) {
+		boardRepository.save(board);
+	}
+
 }

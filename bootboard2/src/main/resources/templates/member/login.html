@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Member | Login</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div id="container">
+		<div id="login">
+			<h4>로그인</h4>
+			<form th:action="@{/member/login}" method="post" class="joinform">
+				<table id="login_tbl">
+					<tr>
+						<td>
+							<input type="text" name="username" id="username" class="login_blk" placeholder="아이디" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="password" name="password" id="password" class="login_blk" placeholder="비밀번호" required>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="로그인" class="join_btn">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<!-- footer.html 연결 -->
+   		<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	</div>
+</body>
+</html>

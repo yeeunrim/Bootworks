@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<link rel="stylesheet" href="/css/style.css">
+<header th:fragment="header-fragment">
+	<h2>YE.EX-SPRING</h2>
+	<div class="h_menu">
+		<!-- 로그인 전 -->
+		<th:block sec:authorize="isAnonymous()">
+			<p><a th:href="@{/member/login}">로그인</a></p>
+	    	<p><a th:href="@{/member/join}">회원가입</a></p>
+	    	<p><a th:href="@{/member/list}">회원목록</a></p>
+	    	<p><a th:href="@{/board/list}">게시판</a></p>
+	    </th:block>
+	    
+	    <!-- 로그인 후 -->
+      	<th:block sec:authorize="isAuthenticated()">
+      		<p><a th:href="@{/member/logout}">로그아웃</a></p>
+	    	<p><a th:href="@{/member/update}">마이페이지</a></p>
+	    	<p><a th:href="@{/member/list}">회원목록</a></p>
+	    	<p><a th:href="@{/board/list}">게시판</a></p>
+	    	<div sec:authorize="isAuthenticated()" class="auth">
+	    		<!-- <p th:text="${#authentication.getPrincipal()}"></p> -->
+				<h1 th:utext="'<span><i style=\'color: rgb(102, 51, 51);\'>' + ${#authentication.principal.member.name} 
+					+ '</i> 님, 만나서 반갑습니다 (,,• ֊ •,,)♡</span>'">
+				</h1>
+    		</div>
+      	</th:block>
+    </div>
+</header>
+</html>

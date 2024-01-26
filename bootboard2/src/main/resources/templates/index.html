@@ -4,31 +4,29 @@
 <meta charset="UTF-8">
 <title>Index</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
-<body id="index">
+<body>
 	<div id="container">
-		<div class="header">
-			<div class="h_menu">
-		    	<p><a th:href="@{/main}">마이페이지</a></p>
-		    	<p><a th:href="@{/member/join}">회원가입</a></p>
-		    	<p><a th:href="@{/member/list}">회원목록</a></p>
-		    	<p><a th:href="@{/board/list}">게시판</a></p>
-		    	<p><a th:href="@{/auth/main}">인증 및 권한</a></p>
-		    </div>
-			<h2>YE.EX-SPRING</h2>
-		</div>	
+		<!-- header.html 연결 -->
+   		<div th:replace="~{/layout/header::header-fragment}"></div>
 		
-		<div class="main-img">
-	    	<img th:src="@{/images/1.jpeg}" alt="snow">
-	    </div>
-	    
-	    <div class="footer">
-	    	<div class="f_menu">
-	    		<p><a th:href="@{#}">개인정보 처리방침</a></p>
-	    		<p><a th:href="@{#}">이용약관</a></p>
-	    	</div>
-	    	<p>Copyright © 2024 YEEUN Inc. 모든 권리 보유.</p>
-	    </div>
+		<section class="main-img">
+			<div class="image1">
+				<img th:src="@{/images/1.jpeg}" alt="mainImg1">
+				<div class="weather">
+					<h2 class="today"></h2>
+					<h3 class="result"></h3>
+				</div>
+			</div>
+			<div class="image2">
+				<img th:src="@{/images/2.jpeg}" alt="mainImg2">
+			</div>
+		</section>
+		
+		<!-- footer.html 연결 -->
+   		<div th:replace="~{/layout/footer::footer-fragment}"></div>
   	</div>
+  	<script src="/js/weather.js"></script>
 </body>
 </html>

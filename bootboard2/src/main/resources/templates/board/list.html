@@ -7,29 +7,35 @@
 </head>
 <body>
 	<div id="container">
-		<h4>게시판</h4>
-		
-		<table class="tbl_list">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>글 내용</th>
-					<th>작성일</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<tr th:each="board : ${boardList}">
-					<td th:text="${board.id}"></td>
-			  	  	<td>
-			  	  		<a th:href="@{|/board/${board.id}|}" th:text="${board.title}"></a>
-			  	  	</td>
-			  	  	<td th:text="${board.content}"></td>
-			  	  	<td th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="boardlist">
+			<h4>게시판</h4>
+			<p>자유롭게 글을 작성해주세요. (서지훈은 나가주세요.)</p>
+			<table id="list_tbl">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="board : ${boardList}">
+						<td th:text="${board.id}"></td>
+				  	  	<td class="boardlist_a">
+				  	  		<a th:href="@{|/board/${board.id}|}" th:text="${board.title}"></a>
+				  	  	</td>
+				  	  	<td th:text="${board.member.name}"></td>
+				  	  	<td th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd aa:HH:mm')}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="list_write">
+				<a th:href="@{/board/write}"><button class="write2_btn">글쓰기</button></a>
+			</div>
+		</div>
+		<!-- footer.html 연결 -->
+   		<div th:replace="~{/layout/footer::footer-fragment}"></div>
 	</div>
 </body>
 </html>
