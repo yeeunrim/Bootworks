@@ -9,7 +9,7 @@
 		<th:block sec:authorize="isAnonymous()">
 			<p><a th:href="@{/member/login}">로그인</a></p>
 	    	<p><a th:href="@{/member/join}">회원가입</a></p>
-	    	<p><a th:href="@{/member/list}">회원목록</a></p>
+	    	<p><a th:href="'#'">상품목록</a></p>
 	    	<p><a th:href="@{/board/list}">게시판</a></p>
 	    </th:block>
 	    
@@ -18,13 +18,16 @@
       		<p><a th:href="@{/member/logout}">로그아웃</a></p>
 	    	<p><a th:href="@{/member/update}">마이페이지</a></p>
 	    	<p><a th:href="@{/member/list}">회원목록</a></p>
+	    	<p><a th:href="'#'">상품목록</a></p>
 	    	<p><a th:href="@{/board/list}">게시판</a></p>
-	    	<div sec:authorize="isAuthenticated()" class="auth">
-	    		<!-- <p th:text="${#authentication.getPrincipal()}"></p> -->
+	    	<div sec:authorize="isAuthenticated()" class="auth">	    		
 				<h1 th:utext="'<span><i style=\'color: rgb(102, 51, 51);\'>' + ${#authentication.principal.member.name} 
 					+ '</i> 님, 만나서 반갑습니다 (,,• ֊ •,,)♡</span>'">
 				</h1>
     		</div>
+    		<!-- <th:block th:if="${#authentication.principal.member.role == 'MEMBER'}">
+    			<h1 th:utext="'<span style=\'color: rgb(102, 51, 51);\'>' + '접근 권한 제한 | 다른 메뉴 이용 부탁드립니다.</span>'"></h1>
+    		</th:block> -->
       	</th:block>
     </div>
 </header>

@@ -1,5 +1,6 @@
 package com.khit.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.khit.board.config.SecurityUser;
+import com.khit.board.dto.MemberDTO;
 import com.khit.board.entity.Member;
 import com.khit.board.entity.Role;
 import com.khit.board.exception.BootBoardException;
@@ -32,23 +34,41 @@ public class MemberService {
 		}
 	}
 
-	public void save(Member member) {
+	public void save(MemberDTO memberDTO) {
 		// 1. 비밀번호 암호화
 		// 2. 권한 설정
-		String encPw = pwEncoder.encode(member.getPassword());
-		member.setRole(Role.MEMBER);
-		member.setPassword(encPw);
+		String encPw = pwEncoder.encode(memberDTO.getPassword());
+		memberDTO.setRole(Role.ADMIN);
+		memberDTO.setPassword(encPw);
+		
+		// 변환 메서드 필요 -> 최종적으로 member로 들어가야 한다.
+		Member member = Member.toSaveEntity(memberDTO);
+		
 		memberRepository.save(member);
 	}
 
-	public List<Member> findAll() {
-		return memberRepository.findAll();
+	public List<MemberDTO> findAll() {
+		// DB에서 memberList를 가져와야 함
+		List<Member> memberList = memberRepository.findAll();
+		
+		// 빈 memberDTOList를 생성
+		List<MemberDTO> memberDTOList = new ArrayList<>();
+		// memberDTOList에 memberDTO를 채움
+		for(Member member : memberList) {
+			MemberDTO memberDTO = MemberDTO.toSaveDTO(member);
+			memberDTOList.add(memberDTO);
+		}
+		
+		return memberDTOList;
 	}
 
-	public Member findById(Integer id) {
+	public MemberDTO findById(Integer id) {
+		// DB에서 member를 꺼내옴
 		Optional<Member> findMember = memberRepository.findById(id);
-		if(findMember.isPresent()) {
-			return findMember.get();
+		if(findMember.isPresent()) { // 회원 정보가 있으면
+			// 변환
+			MemberDTO memberDTO = MemberDTO.toSaveDTO(findMember.get());
+			return memberDTO;
 		} else {
 			throw new BootBoardException("페이지를 찾을 수 없습니다.");
 		}
@@ -58,15 +78,23 @@ public class MemberService {
 		memberRepository.deleteById(id);
 	}
 
-	public Member findByMemberId(SecurityUser principal) {
+	public MemberDTO findByMemberId(SecurityUser principal) {
 		Optional<Member> member = memberRepository.findByMemberId(principal.getUsername());
-		return member.get();
+		
+		// 변환 작업 필요
+		MemberDTO memberDTO = MemberDTO.toSaveDTO(member.get());
+		
+		return memberDTO;
 	}
 
-	public void update(Member member) {
-		String encPW = pwEncoder.encode(member.getPassword());
-		member.setPassword(encPW);
-		member.setRole(Role.MEMBER);
+	public void update(MemberDTO memberDTO) {
+		String encPW = pwEncoder.encode(memberDTO.getPassword());
+		memberDTO.setPassword(encPW);
+		memberDTO.setRole(Role.MEMBER);
+		
+		// 변환 작업 필요
+		Member member = Member.toUpdate(memberDTO);
+		
 		memberRepository.save(member);
 	}
 

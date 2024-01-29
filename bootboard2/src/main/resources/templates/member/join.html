@@ -11,25 +11,27 @@
 		<div id="join">
 			<h4>회원가입</h4>
 			<p id="join_word">* 필수입력</p>
-			<form th:action="@{/member/join}" method="post" class="join_tbl">
+			<form th:action="@{/member/join}" method="post" class="join_tbl" th:object="${memberDTO}">
 				<table id="join_tbl">
 					<tr>
 						<td>
-							<input type="text" name="memberId" class="join_blk" id="memberId" 
-								placeholder="아이디* (4~15자까지 가능)" onblur="checkMemberId()">
-							<p id="check-result"></p>
+							<input type="text" th:field="*{memberId}" class="join_blk" id="memberId" 
+								placeholder="아이디* (4~20자까지 가능)" onblur="checkMemberId()">
+							<p id="check-result" th:if="${#fields.hasErrors('memberId')}" th:errors="*{memberId}" style="color: red;"></p>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="password" name="password" class="join_blk" id="password" 
-			  					placeholder="비밀번호* (영문자, 숫자, 특수문자 포함해 8자 이상 가능)" required>
+							<input type="password" th:field="*{password}" class="join_blk" id="password" 
+			  					placeholder="비밀번호* (영문자, 숫자, 특수문자 포함해 8자 이상 가능)">
+			  				<p id="check-result" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red;"></p>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="name" class="join_blk" id="name" 
+							<input type="text" th:field="*{name}" class="join_blk" id="name" 
 			  					placeholder="이름* (한글만 입력 가능)">
+			  				<p id="check-result" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></p>
 						</td>
 					</tr>
 					<tr>

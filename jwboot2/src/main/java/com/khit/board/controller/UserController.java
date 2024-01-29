@@ -45,15 +45,15 @@ public class UserController {
 		return findUser;
 	}
 	
-//	// 회원 수정
-//	@PutMapping("/user/update/{id}")
-//	public @ResponseBody String updateUser(@RequestBody User user) {
-//		userService.updateUser(user);
-//		return "회원정보 수정 성공";
-//	}
-//	
+	// 회원 수정
+	@PutMapping("/user")
+	public @ResponseBody String updateUser(@RequestBody User user) {
+		userService.updateUser(user);
+		return "회원정보 수정 성공";
+	}
+	
 	// 회원 삭제
-	@DeleteMapping("/user/delete/{id}")
+	@DeleteMapping("/user/{id}")
 	public @ResponseBody String deleteUser(@PathVariable Integer id) {
 		userService.deleteById(id);
 		return "회원 삭제 성공";

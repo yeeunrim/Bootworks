@@ -71,11 +71,17 @@ header h2{
     /* background: silver;
     box-shadow: 1px 1px 3px 1px black inset; */
     color: white;
-    line-height: 35px;
+    line-height: 25px;
     position: absolute;
-    top: 63%;
-    left: 40%;
-    transform: translate(-63%, -40%);
+    top: 0;
+    left: 45%;
+    transform: translate(-63%, 0);
+}
+.weather h2{
+	font-size: 15px;
+}
+.weather h3{
+	font-size: 12px;
 }
 footer{
 	width: 98%;
@@ -422,3 +428,73 @@ header h2 a{
 	margin: 10px 15px;
 	float: right;
 }
+/* 댓글 */
+#reply_menu{
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 10px;
+	text-align: right;
+}
+#reply_menu a{
+	text-decoration: none;
+	color: dimgray;
+	font-size: 14px;
+	text-align: right;
+}
+#reply{
+	width: 500px;
+	margin: 0 auto;
+	padding: 5px 0;
+}
+#reply_word{
+	border-bottom: 1px solid lightgray;
+	padding: 50px 0 10px 10px;
+	margin-bottom: 10px;
+	font-size: large;
+}
+#reply_word2{
+	padding: 10px 0 10px 0;
+}
+#reply_date{
+	font-size: 11px;
+	color: gray;
+	padding: 5px 0;
+}
+#reply_list{
+	padding-bottom: 10px;
+	margin: 10px;
+}
+#reply_blk{
+	height: 90px;
+	border: 1px solid dimgray;
+	padding: 10px;
+	position: relative;
+}
+.reply_area{
+	width: 465px;
+	padding: 5px;
+	border: none;
+	outline: none; /* 클릭 시, 커 */
+	resize: none; /* 세줄 표시 */
+}
+.reply_btn{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	padding: 5px;
+	background: black; 
+	border: none; 
+	color: white; 
+	margin-top: 5px;
+}
+#reply_login{
+	width: 460px;
+	background: black;
+	text-align: center;
+	margin : 20px auto;
+	padding: 10px;
+}
+#reply_login a{
+	color: white;
+	text-decoration: none;
+}
+

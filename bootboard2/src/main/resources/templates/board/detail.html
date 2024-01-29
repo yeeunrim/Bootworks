@@ -3,8 +3,11 @@
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<meta name="_csrf" th:content="${_csrf.token}">
 <title>Board | Detail</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="container">
@@ -23,7 +26,7 @@
 	       		  </tr>
 	       		  <tr>
 	       		  	<td>
-	       		  		<input type="text" th:value="${#dates.format(board.createdDate, 'yyyy-MM-dd aa:HH:mm')}" readonly>
+	       		  		<input type="text" th:value="${#dates.format(board.createdDate, 'yyyy-MM-dd aa hh:mm')}" readonly>
 	       		  	</td>
 	       		  </tr>
 	       		  <tr>
@@ -31,15 +34,15 @@
 	       		  		<textarea name="content" th:text="${board.content}" readonly></textarea>       		  	    
 	       		  	</td>
 	       		  </tr>
-	       		  <tr th:if="${board.updatedDate}">
+	       		  <!-- <tr th:if="${board.updatedDate}">
 	       		  	<td class="boarddetail_blk">
-					    <th:block th:with="update_time=${(#dates.createNow().getTime() - board.updatedTime.time) / 1000}">
+					    <th:block th:with="update_time=${(#dates.createNow().getTime() - board.updatedDate.time) / 1000}">
 					        <span th:if="${update_time < 60}" th:text="${#numbers.formatDecimal(update_time, 0)} + '초 전 수정'"></span>
 					        <span th:if="${update_time >= 60 and update_time < 3600}" th:text="${#numbers.formatDecimal(update_time div 60, 0)} + '분 전 수정'"></span>
 					        <span th:if="${update_time >= 3600 and update_time < 86400}" th:text="${#numbers.formatDecimal(update_time div 3600, 0)} + '시간 전 수정'"></span>
 					    </th:block>
 					</td>
-	       		  </tr>
+	       		  </tr> -->
 	       		  <tr colspan="2">
 	       		  	<td id="boarddetail_menu">
 	       		  		 <a th:href="@{/board/list}">
@@ -57,9 +60,47 @@
 	       		  	</td>
 	       		  </tr>
     		</table>
+    		
+    		<!-- 댓글 영역 -->
+    		<div id="reply">
+				<h5 id="reply_word">댓글</h5>
+	    		<!-- 댓글 목록 -->
+	    		<div id="reply_list" th:each="reply : ${board.replyList}">
+    				<h5 id="reply_word2" th:text="${reply.member.name}">${reply.replyer}</h5>
+					<p th:text="${reply.content}"></p>
+					<p id="reply_date">
+						<!-- 댓글 생성시간 -->
+						<span th:text="${#dates.format(reply.createdDate, 'yyyy-MM-dd aa hh:mm')}"></span>&nbsp;&nbsp;&nbsp;
+						<!-- 댓글 업데이트시간 -->
+						<span th:if="${reply.updatedDate}">
+							<span class="boarddetail_blk">
+								<th:block>
+								</th:block>
+							</span>
+						</span>
+					</p>
+					<p id="reply_menu">
+						<th:block sec:authorize="isAuthenticated()" 
+	       		  			th:if="${#authentication.getPrincipal.getUsername()} == ${reply.member.memberId}">
+							<a th:href="'#'">수정</a> |
+							<!-- 자바스크립트에서 자료형값을 유지 : [[자료]] -->
+							<a th:href="'#'" 
+							   th:onclick="replyObject.deleteReply([[${board.id}]], [[${reply.id}]])">삭제</a>
+						</th:block>
+					</p>
+	    		</div>
+	    		<!-- 댓글 등록 -->
+    			<input type="hidden" id="boardId" th:value="${board.id}">
+	    		<div id="reply_blk">	
+	   				<textarea rows="2" cols="50" id="replyContent" placeholder="댓글을 작성해주세요." class="reply_area"></textarea>
+	   				<button class="reply_btn">등록</button>
+	    		</div>
+    		</div>
     	</div>
        	<!-- footer.html 연결 -->
    		<div th:replace="~{/layout/footer::footer-fragment}"></div>
 	</div>
+	
+	<script src="/js/reply.js"></script>
 </body>
 </html>

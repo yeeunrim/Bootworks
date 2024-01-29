@@ -44,10 +44,10 @@ public class UserService {
 		return findUser;
 	}
 
-//	public void updateUser(User user) {	
-//		userRepository.save(user);
-//	}
-//
+	public void updateUser(User user) {	
+		userRepository.save(user);
+	}
+
 	public void deleteById(Integer id) {
 		userRepository.deleteById(id);
 	}

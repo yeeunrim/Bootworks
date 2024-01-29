@@ -1,5 +1,6 @@
-/* 날씨 정보 */
+/* index.html과 연동 */
 
+/* 날씨 정보 */
 // 날짜를 변수화
 const date = new Date();
 console.log(date);

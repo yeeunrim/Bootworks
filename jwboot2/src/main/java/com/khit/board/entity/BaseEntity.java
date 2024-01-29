@@ -22,7 +22,7 @@ public class BaseEntity {
 	private Timestamp createdDate;
 	
 	@UpdateTimestamp
-	@Column(updatable = false)
+	@Column(insertable = false)
 	private Timestamp updatedDate;
 
 }

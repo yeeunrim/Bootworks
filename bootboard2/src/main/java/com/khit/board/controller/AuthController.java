@@ -10,5 +10,10 @@ public class AuthController {
 	public String authMain() {
 		return "/auth/main";
 	}
+	
+	@GetMapping("/auth/accessDenied")
+	public String access() {
+		return "/auth/accessDenied";
+	}
 
 }
