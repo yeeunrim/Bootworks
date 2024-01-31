@@ -29,7 +29,7 @@ public class BoardController {
 	public String getList(Model model) {
 		List<Board> boardList = boardService.findAll();
 		model.addAttribute("boardList", boardList);
-		return "/board/list";
+		return "board/list";
 	}
 	
 	// 게시글 상세 보기
@@ -37,13 +37,13 @@ public class BoardController {
 	public String getBoard(@PathVariable Integer id, Model model) {
 		Board board = boardService.findById(id);
 		model.addAttribute("board", board);
-		return "/board/detail"; 
+		return "board/detail"; 
 	}
 	
 	// 글쓰기 페이지
 	@GetMapping("/write")
 	public String writeForm() {
-		return "/board/write";
+		return "board/write";
 	}
 	
 	// 글쓰기 처리
@@ -66,7 +66,7 @@ public class BoardController {
 	public String updateForm(@PathVariable Integer id, Model model) {
 		Board board = boardService.findById(id);
 		model.addAttribute("board", board);
-		return "/board/update";
+		return "board/update";
 	}
 	
 	// 글 수정 처리

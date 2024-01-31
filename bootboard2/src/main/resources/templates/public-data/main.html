@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PUBLIC-DATA | MAIN</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=x9dqpuvinw"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="public-data">
+			<div id="map" style="width:68%; height:400px; margin: 50px auto;">
+		  		  <!-- 지도 표시 -->
+			</div>
+			<div id="natural">
+				<h1>지진•해일 긴급대피장소</h1>
+				<div id="buttons">
+					<button type="button" id="btn1">실행</button>
+				</div>
+				<table id="result1">
+					<thead>
+						<tr>
+							<th>일련번호</th>
+							<th>시도명</th>
+							<th>시군구명</th>
+							<th>대피지구명</th>
+							<th>대피장소명</th>
+							<th>주소</th>
+							<th>경도</th>
+							<th>위도</th>
+							<th>수용가능인원(명)</th>
+							<th>해변으로부터의 거리</th>
+							<th>대피소분류명</th>
+							<th>내진적용 여부</th>
+							<th>해발 높이</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- 데이터 출력 -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<!-- footer.html 연결 -->
+   		<div th:replace="~{footer::footer-fragment}"></div>
+  	</div>
+  	
+  	<script src="/js/map.js"></script>
+</body>
+</html>

@@ -9,7 +9,8 @@
 <body>
 	<div id="container">
 		<!-- header.html 연결 -->
-   		<div th:replace="~{/layout/header::header-fragment}"></div>
+   		<!-- <div th:replace="~{/layout/header::header-fragment}"></div> -->
+   		<div th:replace="~{header::header-fragment}"></div>
 		
 		<section class="main-img">
 			<div class="image1">
@@ -25,7 +26,7 @@
 		</section>
 		
 		<!-- footer.html 연결 -->
-   		<div th:replace="~{/layout/footer::footer-fragment}"></div>
+   		<div th:replace="~{footer::footer-fragment}"></div>
   	</div>
   	
   	<script src="/js/weather.js"></script>

@@ -9,7 +9,7 @@
 	<div id="container">
 		<div id="login">
 			<h4>로그인</h4>
-			<form th:action="@{/member/login}" method="post" class="joinform">
+			<form th:action="@{/login}" method="post" class="joinform">
 				<table id="login_tbl">
 					<tr>
 						<td>
@@ -30,7 +30,7 @@
 			</form>
 		</div>
 		<!-- footer.html 연결 -->
-   		<div th:replace="~{/layout/footer::footer-fragment}"></div>
+   		<div th:replace="~{footer::footer-fragment}"></div>
 	</div>
 </body>
 </html>

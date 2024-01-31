@@ -498,3 +498,38 @@ header h2 a{
 	text-decoration: none;
 }
 
+/* /pulbic-data/main.html의 스타일 */
+#natural h1{
+	margin: 80px 0 20px 0;
+	text-align: center;
+}
+#result1{
+	width: 1300px; 
+	margin: 0 auto; 
+	border-collapse: collapse;
+}
+#result1 th{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 7px; 
+	text-align: center;
+}
+#result1 td{
+	border-bottom: 1px solid lightgray;
+	padding: 15px; 
+	text-align: center;
+}
+#buttons{
+	width: 1300px; 
+	margin: 15px auto; 
+	text-align: right;
+}
+#btn1{
+	width: 50px; 
+	padding: 10px; 
+	font-size: 12px; 
+	background: black; 
+	border: none; 
+	color: white; 
+	box-shadow: 0px 0px 5px dimgray; 
+}
