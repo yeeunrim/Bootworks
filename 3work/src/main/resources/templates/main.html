@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>3WORK : WWW</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/aa24b12773.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="main">
+    <div id="container">
+    	<!-- header.html 연결 -->
+      <div th:replace="~{header}"></div>
+  
+      <section id="main_body">
+  			<div id="search_box">
+  				<i class="fa-solid fa-magnifying-glass" style="color: #8B8989"></i>
+  				<input type="text" id="search_input" placeholder="찾고 싶은 친구의 이름 또는 닉네임을 입력해주세요.">
+  			</div>
+  			
+  			<div id="slide_box">
+  				<div id="slide1">
+  					<img th:src="@{/images/main_slide/main_slide_1.jpeg}" alt="main_slide_1">
+  					<div class="slide_content">
+  						<p><i>Health Solutions</i></p>
+  						<p><i>3WORK는<br>즐겁고 건강한 삶을 위해<br>운동과 올바른 식생활에 관련된<br>차별화된 솔루션을 제공합니다.</i></p>
+  					</div>
+  				</div>
+  				<div id="slide2">
+  					<img th:src="@{/images/main_slide/main_slide_2.jpeg}" alt="main_slide_2">
+  					<div class="slide_content2">
+  						<p><i>Wellbeing Life</i></p>
+  						<p><i>3WORK와 함께 건강하고<br>행복한 일상을 만들어보세요 !</i></p>
+  					</div>
+  				</div>
+  				<div id="slide3">
+  					<img th:src="@{/images/main_slide/main_slide_3.jpeg}" alt="main_slide_3">
+  					<div class="slide_content3">
+  						<p><i>With People</i></p>
+  						<p><i>나만의 미니 공간을 만들어 사람들과 소통하고,<br>운동도 함께하면 효과는 무려 두배 !<br>건강 가득한 공간을 만들어보세요.</i></p>
+  					</div>
+  				</div>
+  			</div>
+  			
+  			<div id="login_box">
+  				<div id="login_box_middle">
+  					<button type="button" id="login_btn">LOGIN</button>
+	  				<div id="login_menu">
+	  					<a th:href="'#'">아이디 찾기</a>
+	  					<a th:href="'#'">비밀번호 찾기</a>
+	  					<a th:href="'#'">회원가입</a>
+	  				</div>
+  				</div>
+  			</div>
+  			
+  			<div id="weather_box">
+  				<div id="weather_title">
+  					<p>Weather</p>
+  				</div>
+  				<div id="weather_info">
+  					<div class="weather_icon"></div>
+  					<div class="weather_tem"></div>
+  					<div class="weather_sky"></div>
+  					<div class="weather_ltem"></div>
+  					<div class="weather_htem"></div>
+  				</div>
+  				<div id="weather_etc">
+  					<div class="weather_reh"></div>
+  					<div class="weather_pop"></div>
+  					<div class="weather_wsd"></div>
+  				</div>
+  			</div>
+      </section>
+      
+      <!-- footer.html 연결 -->
+   		<div th:replace="~{footer}"></div>
+    </div>
+  </div>
+  
+  <!-- 스크립트 -->
+  <script src="/js/main.js"></script>
+</body>
+</html>

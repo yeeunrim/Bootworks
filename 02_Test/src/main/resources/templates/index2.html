@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01/31/수-시험</title>
+<!-- jquery 라이브러리 추가 -->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="forecast">
+		<h2>오늘의 날씨</h2>
+		
+		<h3 class="result">
+			<!-- 데이터 -->
+		</h3>
+	</div>
+	
+	<script>
+	const date = new Date();
+	
+	let year = date.getFullYear();
+	
+	let month = '0' + date.getMonth() + 1;
+	month = month.substring(1); // 2가 아니라 1이다. 1번째 인덱스부터 끝까지 추출
+	
+	let day = '0' + date.getDate();
+	day = day.substring(1); // 2가 아니라 1이다. 1번째 인덱스부터 끝까지 추출
+	
+	let today = year + month + day;
+	
+	$.ajax({
+		type: "GET",
+		url: 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst'
+		+ '?serviceKey=zsy2cxIsnAul6JnzOV1ul3h%2FKXxNtT7Xw7Q6BOieVjRXmFxmTjKs1S02jYe6mE8sRHEQ38e8sfupjwYKLKImsQ%3D%3D' // 서비스 키 입력
+		+ '&pageNo=1&numOfRows=1000&dataType=json'
+		+ '&base_date=' + today + '&base_time=0600&nx=55&ny=127',
+		success: function(data){
+			let item = data.response.body.items.item[3]; // data.response.body.items[3]은 잘못된 구문이다.
+			let content = "날짜: " + item.baseDate + ', ' + "발표시각: " + item.baseTime + ', ' + "기온: " + item.obsrValue;
+			$('.result').text(data);
+		},
+		error: function(error){
+			console.log("ajax 통신 실패!" + error); // 에러 발생 시, 문구 출력 -> 추가
+		}
+	});
+	</script>
+</body>
+</html>
