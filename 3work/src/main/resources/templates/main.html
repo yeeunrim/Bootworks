@@ -20,21 +20,21 @@
   			</div>
   			
   			<div id="slide_box">
-  				<div id="slide1">
+  				<div id="slide1" style="display: none;">
   					<img th:src="@{/images/main_slide/main_slide_1.jpeg}" alt="main_slide_1">
   					<div class="slide_content">
   						<p><i>Health Solutions</i></p>
   						<p><i>3WORK는<br>즐겁고 건강한 삶을 위해<br>운동과 올바른 식생활에 관련된<br>차별화된 솔루션을 제공합니다.</i></p>
   					</div>
   				</div>
-  				<div id="slide2">
+  				<div id="slide2" style="display: none;">
   					<img th:src="@{/images/main_slide/main_slide_2.jpeg}" alt="main_slide_2">
   					<div class="slide_content2">
   						<p><i>Wellbeing Life</i></p>
   						<p><i>3WORK와 함께 건강하고<br>행복한 일상을 만들어보세요 !</i></p>
   					</div>
   				</div>
-  				<div id="slide3">
+  				<div id="slide3" style="display: none;">
   					<img th:src="@{/images/main_slide/main_slide_3.jpeg}" alt="main_slide_3">
   					<div class="slide_content3">
   						<p><i>With People</i></p>
@@ -45,7 +45,7 @@
   			
   			<div id="login_box">
   				<div id="login_box_middle">
-  					<button type="button" id="login_btn">LOGIN</button>
+  					<button type="button" id="login_btn">3WORK&nbsp;:&nbsp;로그인</span></button>
 	  				<div id="login_menu">
 	  					<a th:href="'#'">아이디 찾기</a>
 	  					<a th:href="'#'">비밀번호 찾기</a>
@@ -56,19 +56,96 @@
   			
   			<div id="weather_box">
   				<div id="weather_title">
-  					<p>Weather</p>
+  					<p>날씨</p>
   				</div>
   				<div id="weather_info">
-  					<div class="weather_icon"></div>
-  					<div class="weather_tem"></div>
-  					<div class="weather_sky"></div>
-  					<div class="weather_ltem"></div>
-  					<div class="weather_htem"></div>
+  					
   				</div>
   				<div id="weather_etc">
-  					<div class="weather_reh"></div>
-  					<div class="weather_pop"></div>
-  					<div class="weather_wsd"></div>
+  					
+  				</div>
+  			</div>
+  			
+  			<div id="work_recommend">
+  				<!-- 추천 카데고리 제목  -->
+  				<div class="work_title">
+  					<p>3WORK RECOMMEND</p>
+  				</div>
+  				<!-- 추천 카데고리의 메뉴  -->
+  				<div class="work_menu">
+  					<a th:href="'#'">노래 추천</a>
+  					&nbsp;/&nbsp;
+  					<a th:href="'#'">건강 식품</a>
+  					&nbsp;/&nbsp;
+  					<a th:href="'#'">운동기구&운동복</a>
+  				</div>
+  				<div id="work_recommend_link">
+	  				<!-- 노래 추천 링크 이동 이미지 -->
+	  				<div id="work_music">
+	  					<a th:href="'#'">
+			  				<img th:src="@{/images/main_body/3work_recommend_1.png}" alt="3work_recommend_1">
+	  					</a>
+  					</div>
+  					<!-- 식품 추천 링크 이동 이미지 -->
+  					<div id="work_food">
+	  					<a th:href="'#'">
+		  					<img th:src="@{/images/main_body/3work_recommend_2.png}" alt="3work_recommend_2">
+	  					</a>
+	  				</div>
+	  				<div id="work_item">
+	  					<!-- 운동기구&운동복 링크 이동 이미지 -->
+	  					<a th:href="'#'">
+		  					<img th:src="@{/images/main_body/3work_recommend_3.png}" alt="3work_recommend_3">
+	  					</a>
+  					</div>
+  				</div>
+  			</div>
+  			
+  			<div id="work_info">
+  				<!-- 추천 카데고리 제목  -->
+  				<div class="work_title">
+  					<p>3WORK INFORMATION</p>
+  				</div>
+  				<!-- 추천 카데고리의 메뉴  -->
+  				<div class="work_menu">
+  					<a th:href="'#'">건강 뉴스</a>
+  					&nbsp;/&nbsp;
+  					<a th:href="'#'">지도</a>
+  					&nbsp;/&nbsp;
+  					<a th:href="'#'">운동 정보</a>
+  				</div>
+  				<div id="work_info_link">
+	  				<!-- 건강 뉴스 링크 이동 이미지 -->
+	  				<div id="work_news">
+	  					<a th:href="'#'">
+			  				<img th:src="@{/images/main_body/3work_info_1.png}" alt="3work_info_1">
+	  					</a>
+	  					<div id="work_news_content">
+		  					<p>2024 JAN<p>
+		  					<p>Healthy News</p>
+		  					<p>당신의 건강한 삶을 위한 뉴스 !</p>
+	  					</div>
+	  				</div>
+	  				<!-- 지도 링크 이동 이미지 -->
+	  				<div id="work_map">
+	  					<a th:href="'#'">
+		  					<img th:src="@{/images/main_body/3work_info_2.png}" alt="3work_info_2">
+	  					</a>
+	  					<div id="work_map_content">
+		  					<p>My Health Place</p>
+		  					<p>우리 동네 근처 헬스장 찾기</p>
+	  					</div>
+	  				</div>
+	  				<!-- 운동 꿀팁 링크 이동 이미지 -->
+	  				<div id="work_method">
+	  					<a th:href="'#'">
+		  					<img th:src="@{/images/main_body/3work_info_3.png}" alt="3work_info_3">
+	  					</a>
+	  					<div id="work_method_content">
+		  					<p>Good Exercise</p>
+		  					<p>건강하고 효과적인 운동 방법 !</p>
+	  					</div>
+	  				</div>
   				</div>
   			</div>
       </section>

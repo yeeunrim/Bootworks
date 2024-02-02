@@ -1,8 +1,11 @@
 $(document).ready(function() {
   // 초기 설정
-  var currentSlide = 1; // 시작 슬라이드 번호
+  var currentSlide = 3; // 시작 슬라이드 번호
   var totalSlides = 3; // 전체 슬라이드 개수
 
+	// 모든 슬라이드를 숨김
+  $(".slide").hide();
+  
   // 슬라이드가 전환되는 함수
   function nextSlide() {
     // 현재 슬라이드 숨김
@@ -21,8 +24,8 @@ $(document).ready(function() {
   // 페이지가 로드될 때 초기 슬라이드 표시
   nextSlide();
 
-  // 4초마다 nextSlide 함수 호출하여 슬라이드 전환 (무한 반복)
-  setInterval(nextSlide, 4000);
+  // 3초마다 nextSlide 함수 호출하여 슬라이드 전환 (무한 반복)
+  setInterval(nextSlide, 3000);
 });
 
 
